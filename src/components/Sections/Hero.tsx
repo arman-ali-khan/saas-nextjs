@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../../components/ui/button";
 
 const HeroSection = () => {
@@ -21,10 +22,10 @@ const HeroSection = () => {
                 </p>
                 <div className="mt-8 flex gap-4">
                   <Button size="lg" asChild>
-                    <a href="/register">Get Started</a>
+                    <Link href="/auth/register">Get Started</Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
-                    <a href="#demo">Watch Demo</a>
+                    <Link href="#demo">Watch Demo</Link>
                   </Button>
                 </div>
                 <div className="mt-8 flex items-center gap-4">
