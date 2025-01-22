@@ -1,6 +1,7 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight, LayoutDashboard, type LucideIcon } from "lucide-react"
+import { useState } from "react"
 
 import {
   Collapsible,
@@ -17,6 +18,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "./ui/sidebar"
+import Link from "next/link"
 
 export function NavMain({
   items,
@@ -32,15 +34,32 @@ export function NavMain({
     }[]
   }[]
 }) {
+  const [openItem, setOpenItem] = useState<string | null>(
+    items.find(item => item.isActive)?.title || null
+  )
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton asChild tooltip="Dashboard">
+            <Link href="/dashboard">
+              <LayoutDashboard />
+              <span>Dashboard</span>
+              {/* <ChevronRight className="ml-auto transition-transform duration-200" /> */}
+            </Link>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+
         {items.map((item) => (
           <Collapsible
             key={item.title}
             asChild
-            defaultOpen={item.isActive}
+            open={openItem === item.title}
+            onOpenChange={(isOpen) => {
+              setOpenItem(isOpen ? item.title : null)
+            }}
             className="group/collapsible"
           >
             <SidebarMenuItem>
@@ -56,9 +75,9 @@ export function NavMain({
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild>
-                        <a href={subItem.url}>
+                        <Link href={subItem.url}>
                           <span>{subItem.title}</span>
-                        </a>
+                        </Link>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}

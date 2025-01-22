@@ -93,31 +93,39 @@ export function TeamSwitcher({
               <div className="flex size-6 items-center justify-center rounded-md border bg-background">
                 <Plus className="size-4" />
               </div><div className="font-medium text-muted-foreground">Add team</div> </div></DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Store Create</DialogTitle>
-          <DialogDescription>
-            Make sure your domain based on your store type.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" placeholder="Enter your store name" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="domain" className="text-right flex">
-              Domain
-            </Label>
-            <Input placeholder="Enter your domain" id="domain" className="col-span-3" />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
-      </DialogContent>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Create store</DialogTitle>
+                  <DialogDescription>
+                    Add a new store to manage products and inventory.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="name" className="text-right">
+                      Name
+                    </Label>
+                    <Input
+                      id="name"
+                      className="col-span-3"
+                      placeholder="Enter store name"
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="domain" className="text-right">
+                      Domain
+                    </Label>
+                    <Input
+                      id="domain"
+                      className="col-span-3"
+                      placeholder="Enter domain"
+                    />
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button type="submit">Create store</Button>
+                </DialogFooter>
+              </DialogContent>
 </Dialog>
 
              

@@ -10,7 +10,7 @@ const HeroSection = () => {
       <div className="mx-auto max-w-7xl">
         <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 lg:w-full">
           <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-8 pt-10 sm:pt-16 lg:pt-20">
+            <div className="grid md:grid-cols-2 gap-8 pt-10 sm:pt-16 lg:pt-20">
               {/* Text Content */}
               <div className="flex flex-col justify-center">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
@@ -49,7 +49,7 @@ const HeroSection = () => {
               </div>
 
               {/* Image */}
-              <div className="relative mt-8 lg:mt-0">
+              <div className="relative hidden md:block mt-8 lg:mt-0">
                 <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
                   <div className="relative block w-full overflow-hidden rounded-lg">
                     <Image width={600} height={600}

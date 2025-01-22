@@ -3,15 +3,28 @@
 import * as React from "react"
 import {
   AudioWaveform,
+  Banknote,
+  BoltIcon,
   BookOpen,
   Bot,
+  CircleDollarSign,
+  CircleParkingIcon,
   Command,
   Frame,
   GalleryVerticalEnd,
+  LucideUsersRound,
   Map,
+  Newspaper,
+  PanelsTopLeft,
   PieChart,
+  PrinterCheckIcon,
   Settings2,
   SquareTerminal,
+  StickyNote,
+  UsersIcon,
+  UserX2Icon,
+  Wallet,
+  Wallet2,
 } from "lucide-react"
 
 import { NavMain } from "../components/nav-main"
@@ -51,25 +64,99 @@ const data = {
     },
   ],
   navMain: [
+   
     {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: SquareTerminal,
-      isActive: true,
-     
-    },
-    {
-      title: "Playground",
+      title: "Admin Role Manage",
       url: "#",
-      icon: SquareTerminal,
+      icon: LucideUsersRound,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "All Admin",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Add New Admin",
+          url: "#",
+        },
+        {
+          title: "All Admin Role",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Users Manage",
+      url: "#",
+      icon: UsersIcon,
+      items: [
+        {
+          title: "All Users",
+          url: "#",
+        },
+        {
+          title: "All Shops",
+          url: "#",
+        },
+        {
+          title: "Add New",
+          url: "#",
+        },
+        {
+          title: "Activity Log",
+          url: "#",
+        },
+        {
+          title: "Account Settings",
+          url: "#",
+        },
+        {
+          title: "Failed Shops",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Pages",
+      url: "#",
+      icon: StickyNote,
+      items: [
+        {
+          title: "All Pages",
+          url: "#",
+        },
+        {
+          title: "New Page",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Themes",
+      url: "#",
+      icon: PanelsTopLeft,
+      items: [
+        {
+          title: "All Themes",
+          url: "#",
+        },
+        {
+          title: "Themes Settings",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Price Plan",
+      url: "#",
+      icon: CircleDollarSign,
+      items: [
+        {
+          title: "All Price Plan",
+          url: "#",
+        },
+        {
+          title: "New Price Plan",
           url: "#",
         },
         {
@@ -79,43 +166,93 @@ const data = {
       ],
     },
     {
-      title: "Models",
+      title: "Package Order Manage",
       url: "#",
-      icon: Bot,
+      icon: Banknote,
       items: [
         {
-          title: "Genesis",
+          title: "All Order",
           url: "#",
         },
         {
-          title: "Explorer",
+          title: "Success Order Page",
           url: "#",
         },
         {
-          title: "Quantum",
+          title: "Cancel Order Page",
+          url: "#",
+        },
+        {
+          title: "Order Page Manage",
+          url: "#",
+        },
+        {
+          title: "Order Report",
+          url: "#",
+        },
+        {
+          title: "All Payment Logs",
+          url: "#",
+        },
+        {
+          title: "Payment Report",
+          url: "#",
+        },
+        {
+          title: "Invoice Settings",
           url: "#",
         },
       ],
     },
     {
-      title: "Documentation",
+      title: "Wallet Manage",
       url: "#",
-      icon: BookOpen,
+      icon: Wallet2,
       items: [
         {
-          title: "Introduction",
+          title: "All Wallet",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: "Wallet History",
           url: "#",
         },
         {
-          title: "Tutorials",
+          title: "Wallet Settings",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Newsletter Manage",
+      url: "#",
+      icon: Newspaper,
+      items: [
+        {
+          title: "All Subscribers",
           url: "#",
         },
         {
-          title: "Changelog",
+          title: "Send Mail to All",
+          url: "#",
+        }
+      ],
+    },
+    {
+      title: "Plugins Manage",
+      url: "#",
+      icon: BoltIcon,
+      items: [
+        {
+          title: "All Plugins",
+          url: "#",
+        },
+        {
+          title: "Add New Plugin",
+          url: "#",
+        },
+        {
+          title: "Enable Plugins Store",
           url: "#",
         },
       ],
@@ -126,19 +263,47 @@ const data = {
       icon: Settings2,
       items: [
         {
-          title: "General",
+          title: "Page Settings",
           url: "#",
         },
         {
-          title: "Team",
+          title: "Site Identity",
           url: "#",
         },
         {
-          title: "Billing",
+          title: "Basic Settings",
           url: "#",
         },
         {
-          title: "Limits",
+          title: "Themes Settings",
+          url: "#",
+        },
+        {
+          title: "SEO Settings",
+          url: "#",
+        },
+        {
+          title: "Smtp Settings",
+          url: "#",
+        },
+        {
+          title: "SSL Settings",
+          url: "#",
+        },
+        {
+          title: "GDPR Settings",
+          url: "#",
+        },
+        {
+          title: "Cache Settings",
+          url: "#",
+        },
+        {
+          title: "License Settings",
+          url: "#",
+        },
+        {
+          title: "Check Update",
           url: "#",
         },
       ],
@@ -166,7 +331,7 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
+      <SidebarHeader className="mt-14">
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>

@@ -25,9 +25,9 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex">
-            <a href="/" className="flex items-center font-bold text-xl">
+            <Link href="/" className="flex items-center font-bold text-xl">
               SaaS Logo
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
