@@ -73,15 +73,15 @@ const data = {
       items: [
         {
           title: "All Admin",
-          url: "#",
+          url: "/dashboard/admin-role-manage/all-admin",
         },
         {
           title: "Add New Admin",
-          url: "#",
+          url: "/dashboard/admin-role-manage/add-new-admin",
         },
         {
           title: "All Admin Role",
-          url: "#",
+          url: "/dashboard/admin-role-manage/all-admin-role",
         },
       ],
     },

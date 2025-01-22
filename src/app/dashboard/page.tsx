@@ -17,6 +17,7 @@ import {
 import { DashboardCharts } from "../../components/Admin/Section/DashboardCharts"
 import { Activity, CreditCard, DollarSign, Users } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
+import Link from "next/link";
 
 
 export default function DashboardPage() {
@@ -29,19 +30,22 @@ export default function DashboardPage() {
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
+            <SidebarTrigger title="Show/Hide Sidebar" className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="/dashboard">
+                  <Link href="/dashboard">
                     Dashboard
-                  </BreadcrumbLink>
+                  </Link>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
+                {
+                  router !== '/dashboard' && <> <BreadcrumbSeparator className="hidden md:block" />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  </BreadcrumbItem></>
+                }
+               
               </BreadcrumbList>
             </Breadcrumb>
           </div>
