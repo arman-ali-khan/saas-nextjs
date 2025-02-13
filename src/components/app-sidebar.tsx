@@ -123,11 +123,11 @@ const data = {
       items: [
         {
           title: "All Pages",
-          url: "#",
+          url: "/dashboard/pages/all-pages",
         },
         {
           title: "New Page",
-          url: "#",
+          url: "/dashboard/pages/add-page",
         },
       ],
     },
@@ -138,11 +138,11 @@ const data = {
       items: [
         {
           title: "All Themes",
-          url: "#",
+          url: "/dashboard/themes/all-themes",
         },
         {
           title: "Themes Settings",
-          url: "#",
+          url: "/dashboard/themes/themes-settings",
         },
       ],
     },
