@@ -18,7 +18,7 @@ import { Button } from "../../../../components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../../components/ui/card"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { Search, Plus, MoreVertical, Pencil, Trash, Eye, Check } from "lucide-react"
+import { Search, Plus, MoreVertical, Pencil, Trash, Eye } from "lucide-react"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../../../../components/ui/dialog";
 import {
   DropdownMenu,
@@ -29,12 +29,12 @@ import {
 import { useState, useEffect } from "react";
 import { Label } from "../../../../components/ui/label";
 import { Input } from "../../../../components/ui/input";
+import ReactSelect from 'react-select';
 
 export default function AllThemes() {
   const router = usePathname()
   const [themes, setThemes] = useState([]);
-  const [userType, setUserType] = useState('free'); // Assuming 'free' or 'premium'
-  const [selectedStore, setSelectedStore] = useState(null); // Assume store selection logic is implemented
+  const [selectedStores, setSelectedStores] = useState([{ value: 'any_store', label: 'Any Store' }]);
 
   useEffect(() => {
     // Simulate fetching themes from an API or local source
@@ -46,8 +46,7 @@ export default function AllThemes() {
         settings: {
           color: "blue",
           font: "Arial"
-        },
-        assignedStores: [] // List of store IDs where this theme is assigned
+        }
       },
       {
         id: 2, 
@@ -56,29 +55,20 @@ export default function AllThemes() {
         settings: {
           color: "green",
           font: "Times New Roman"
-        },
-        assignedStores: [] // List of store IDs where this theme is assigned
+        }
       },
       // Add more theme data as needed
     ];
     setThemes(initialThemes);
   }, []);
 
-  const assignThemeToStore = (themeId) => {
-    setThemes(themes.map(theme => 
-      theme.id === themeId 
-        ? {...theme, assignedStores: [...theme.assignedStores, selectedStore]}
-        : theme
-    ));
-  };
-
-  const removeThemeFromStore = (themeId) => {
-    setThemes(themes.map(theme => 
-      theme.id === themeId 
-        ? {...theme, assignedStores: theme.assignedStores.filter(storeId => storeId !== selectedStore)}
-        : theme
-    ));
-  };
+  const stores = [
+    { value: 'store1', label: 'Store 1' },
+    { value: 'store2', label: 'Store 2' },
+    { value: 'group1', label: 'Group 1' },
+    { value: 'group2', label: 'Group 2' },
+    // Add more stores/groups as needed
+  ];
 
   return (
     <SidebarProvider>
@@ -224,21 +214,21 @@ export default function AllThemes() {
                         </DialogDescription>
                       </DialogHeader>
                       <div className="grid gap-4 py-4">
+                       
                         <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="edit-name" className="text-right">Name</Label>
-                          <Input id="edit-name" defaultValue={theme.name} className="col-span-3" />
-                        </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="edit-preview" className="text-right">Preview URL</Label>
-                          <Input id="edit-preview" defaultValue={theme.preview} className="col-span-3" />
-                        </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="edit-color" className="text-right">Color</Label>
-                          <Input id="edit-color" defaultValue={theme.settings.color} className="col-span-3" />
-                        </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="edit-font" className="text-right">Font</Label>
-                          <Input id="edit-font" defaultValue={theme.settings.font} className="col-span-3" />
+                          <Label className="text-right">
+                            Select Stores/Groups
+                          </Label>
+                          <div className="col-span-3">
+                            <ReactSelect
+                              value={selectedStores}
+                              onChange={(newValue) => setSelectedStores(newValue)}
+                              options={[{ value: 'any_store', label: 'Any Store' }, ...stores]}
+                              isMulti
+                              className="basic-multi-select"
+                              classNamePrefix="select"
+                            />
+                          </div>
                         </div>
                       </div>
                       <DialogFooter>
@@ -257,20 +247,6 @@ export default function AllThemes() {
                       <DropdownMenuItem>View Details</DropdownMenuItem>
                       <DropdownMenuItem>Change Settings</DropdownMenuItem>
                       <DropdownMenuItem>Disable Theme</DropdownMenuItem>
-                      {userType === 'premium' && (
-                        <DropdownMenuItem>
-                          <Button variant="ghost" size="icon" onClick={() => assignThemeToStore(theme.id)}>
-                            <Check className="w-4 h-4" /> Assign to Store
-                          </Button>
-                        </DropdownMenuItem>
-                      )}
-                      {theme.assignedStores.includes(selectedStore) && (
-                        <DropdownMenuItem>
-                          <Button variant="ghost" size="icon" onClick={() => removeThemeFromStore(theme.id)}>
-                            <Trash className="w-4 h-4" /> Remove from Store
-                          </Button>
-                        </DropdownMenuItem>
-                      )}
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </CardFooter>
