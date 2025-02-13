@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <main>
       <div className="mx-auto max-w-7xl">
+      
         <HeroSection />
         <WhyChooseUs />
         <Features />

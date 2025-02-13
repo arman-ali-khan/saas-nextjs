@@ -92,27 +92,27 @@ const data = {
       items: [
         {
           title: "All Users",
-          url: "#",
+          url: "/dashboard/users-manage/all-users",
         },
         {
           title: "All Shops",
-          url: "#",
+          url: "/dashboard/users-manage/all-shops",
         },
         {
           title: "Add New",
-          url: "#",
+          url: "/dashboard/users-manage/add-new-user",
         },
         {
           title: "Activity Log",
-          url: "#",
+          url: "/dashboard/users-manage/activity-log",
         },
         {
           title: "Account Settings",
-          url: "#",
+          url: "/dashboard/users-manage/account-settings",
         },
         {
           title: "Failed Shops",
-          url: "#",
+          url: "/dashboard/users-manage/failed-shop",
         },
       ],
     },
