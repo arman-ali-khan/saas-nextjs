@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { usePathname } from "next/navigation"
 import {
   AudioWaveform,
   Banknote,
@@ -64,12 +65,10 @@ const data = {
     },
   ],
   navMain: [
-   
     {
       title: "Admin Role Manage",
       url: "#",
       icon: LucideUsersRound,
-      isActive: true,
       items: [
         {
           title: "All Admin",
@@ -329,13 +328,24 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname()
+
+  const updatedNavMain = data.navMain.map((section) => ({
+    ...section,
+    isActive: section.items.some((item) => pathname.startsWith(item.url)),
+    items: section.items.map((item) => ({
+      ...item,
+      isActive: pathname === item.url,
+    })),
+  }))
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="mt-14">
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={updatedNavMain} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
