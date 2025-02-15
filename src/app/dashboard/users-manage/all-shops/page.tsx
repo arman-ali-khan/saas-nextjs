@@ -176,9 +176,9 @@ export default function AllShop() {
                           <span className="cursor-pointer hover:underline">{shop.shopOwner}</span>
                         </HoverCardTrigger>
                         <HoverCardContent>
-                          <div className="flex items-center space-x-4">
-                            <Image src={shop.shopOwnerDetails.profilePic} alt={`${shop.shopOwner}'s profile`} className="w-10 h-10 rounded-full" />
-                            <div>
+                          <div className="flex items-center w-96 space-x-4">
+                            <Image src={shop.shopOwnerDetails.profilePic} alt={`${shop.shopOwner}'s profile`} className="w-8 h-10 rounded-full" />
+                            <div className="w-full">
                               <p className="font-semibold">{shop.shopOwner}</p>
                               <p className="text-sm">
                                 <User className="inline-block w-4 h-4 mr-1" /> শপ তৈরি করেছেন: {shop.shopOwnerDetails.shopsCreated}
